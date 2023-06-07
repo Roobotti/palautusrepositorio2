@@ -12,7 +12,7 @@ const Country = ([{name, capital, area, languages, flags}, {temp, speed, icon}])
                 {Object.values(languages).map((language, key) => <li key={key}>{language}</li>)}
             </ul>
             <img src={flags.png} alt="Country flag" style={{width:'150px', height: 'auto'}}></img>
-            <h3>Weather in Helsinki</h3>
+            <h3>Weather in {capital}</h3>
             <form>
                 <b>tempature {temp} Celcius </b>
                 <br />

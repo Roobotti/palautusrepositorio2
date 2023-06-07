@@ -6,10 +6,11 @@ import Persons from './components/Persons'
 import personService from './services/persons'
 import Notification from './components/Notification'
 
-axios.get('http://localhost:3001/persons').then(response => {
+axios.get('http://localhost:3001/api/persons').then(response => {
   const notes = response.data
   console.log(notes)
 })
+.catch(error => console.log(error))
 
 const App = () => {
   const [persons, setPersons] = useState([]) 
@@ -73,13 +74,17 @@ const App = () => {
   
     personService
       .create(personObject)
-        .then(returnedPerson => {
+      .then(returnedPerson => {
         setPersons(persons.concat(returnedPerson))
         setNewName('')
         setNewNumber('')
         showMessage(`The contact '${returnedPerson.name}' is added`)
       })
-  }
+      .catch( error => {
+        console.log(error.response.data)
+        showMessage( (error.response.data.error), true)
+      })
+    }
 
   const handleNameChange = (event) => {
     console.log(event.target.value)

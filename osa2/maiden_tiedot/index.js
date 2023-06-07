@@ -9,7 +9,7 @@ const app = express()
 app.use(cors())
 
 app.get('/', (req, res) => {
-    res.json('hi')
+    res.json('hi aurora')
 })
 
 app.get('/weather', (req,res) => {
